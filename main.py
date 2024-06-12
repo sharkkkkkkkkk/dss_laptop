@@ -12,8 +12,8 @@ data = load_data()
 # Set up halaman
 st.set_page_config(
     page_title="Sistem Pendukung Keputusan Pemilihan Laptop",
-    page_icon=":computer:",
-    layout="wide"
+   layout="wide"
+
 )
 
 # Header
