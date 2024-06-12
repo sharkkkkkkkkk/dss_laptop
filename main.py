@@ -10,7 +10,11 @@ def load_data():
 data = load_data()
 
 # Set up halaman
-st.set_page_config(page_title="Sistem Pendukung Keputusan Pemilihan Laptop", page_icon=":computer:", layout="wide")
+st.set_page_config(
+    page_title="Sistem Pendukung Keputusan Pemilihan Laptop",
+    page_icon=":computer:",
+    layout="wide"
+)
 
 # Header
 st.image("https://images.app.goo.gl/dEKRW8VtDUWDSJM97", width=100)  # Ganti dengan URL gambar logo Anda
