@@ -13,7 +13,7 @@ data = load_data()
 st.set_page_config(page_title="Sistem Pendukung Keputusan Pemilihan Laptop", page_icon=":computer:", layout="wide")
 
 # Header
-st.image("https://example.com/your-logo.png", width=100)  # Ganti dengan URL gambar logo Anda
+st.image("https://images.app.goo.gl/dEKRW8VtDUWDSJM97", width=100)  # Ganti dengan URL gambar logo Anda
 st.title('Sistem Pendukung Keputusan Pemilihan Laptop')
 st.markdown("Selamat datang di Sistem Pendukung Keputusan untuk pemilihan laptop yang sesuai dengan kebutuhan Anda. "
             "Silakan sesuaikan kriteria di bawah ini untuk mendapatkan rekomendasi terbaik.")
@@ -54,6 +54,6 @@ st.markdown("""
         }
     </style>
     <div class="footer">
-        © 2024 Sistem Pendukung Keputusan Pemilihan Laptop. Dikembangkan oleh [Nama Anda].
+        © 2024 Sistem Pendukung Keputusan Pemilihan Laptop. Dikembangkan oleh hitler.
     </div>
 """, unsafe_allow_html=True)
