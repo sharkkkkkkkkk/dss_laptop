@@ -48,10 +48,10 @@ with col6:
 # Filter data berdasarkan input pengguna
 filtered_data = data[(data['Harga'] >= min_price) &
                      (data['Harga'] <= max_price) &
-                     (data['RAM'] >= min_ram) &
-                     (data['RAM'] <= max_ram) &
-                     (data['Penyimpanan'] >= min_storage) &
-                     (data['Penyimpanan'] <= max_storage)]
+                     (data['RAM(GB)'] >= min_ram) &
+                     (data['RAM(GB)'] <= max_ram) &
+                     (data['Penyimpanan(GB)'] >= min_storage) &
+                     (data['Penyimpanan(GB)'] <= max_storage)]
 
 # Menampilkan hasil
 st.subheader('Laptop yang Direkomendasikan')
