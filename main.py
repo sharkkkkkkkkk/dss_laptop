@@ -53,8 +53,8 @@ filtered_data = data[(data['Harga'] >= min_price) &
                      (data['Penyimpanan'] >= min_storage) &
                      (data['Penyimpanan'] <= max_storage)]
 
-if selected_nama != 'Semua':
-    filtered_data = filtered_data[filtered_data['Nama'] == selected_nama]
+if selected_brand != 'Semua':
+    filtered_data = filtered_data[filtered_data['Nama'] == selected_brand]
 
 # Menampilkan hasil
 st.subheader('Laptop yang Direkomendasikan')
