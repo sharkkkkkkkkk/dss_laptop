@@ -9,9 +9,6 @@ def load_data():
 
 data = load_data()
 
-# Set up halaman
-st.set_page_config(page_title="Sistem Pendukung Keputusan Pemilihan Laptop", page_icon=":computer:", layout="wide")
-
 # Header
 st.title('Sistem Pendukung Keputusan Pemilihan Laptop')
 st.markdown("Selamat datang di Sistem Pendukung Keputusan untuk pemilihan laptop yang sesuai dengan kebutuhan Anda. "
