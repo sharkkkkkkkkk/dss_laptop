@@ -10,39 +10,59 @@ def load_data():
 data = load_data()
 
 # Set up halaman
-st.set_page_config(
-    page_title="Sistem Pendukung Keputusan Pemilihan Laptop",
-   layout="wide"
-
-)
+st.set_page_config(page_title="Sistem Pendukung Keputusan Pemilihan Laptop", layout="wide")
 
 # Header
-st.image("https://images.app.goo.gl/dEKRW8VtDUWDSJM97", width=100)  # Ganti dengan URL gambar logo Anda
 st.title('Sistem Pendukung Keputusan Pemilihan Laptop')
 st.markdown("Selamat datang di Sistem Pendukung Keputusan untuk pemilihan laptop yang sesuai dengan kebutuhan Anda. "
             "Silakan sesuaikan kriteria di bawah ini untuk mendapatkan rekomendasi terbaik.")
 
-# Layout dengan dua kolom
-col1, col2, col3 = st.columns(3)
+# Rentang harga yang tersedia
+harga_values = sorted(data['Harga'].unique())
+ram_values = sorted(data['RAM'].unique())
+storage_values = sorted(data['Penyimpanan'].unique())
 
+# Menampilkan rentang harga terendah dan tertinggi
+st.markdown(f"**Harga Terendah:** IDR {harga_values[0]:,}")
+st.markdown(f"**Harga Tertinggi:** IDR {harga_values[-1]:,}")
+
+# Selectbox untuk memilih rentang harga
+col1, col2 = st.columns(2)
 with col1:
-    max_price = st.slider('Batas Maksimal Harga (IDR)', 0, 30000000, 15000000, step=1000000)
-
+    min_price = st.selectbox('Batas Minimal Harga (IDR)', harga_values, index=0)
 with col2:
-    min_ram = st.slider('Minimal RAM (GB)', 4, 64, 8, step=4)
+    max_price = st.selectbox('Batas Maksimal Harga (IDR)', harga_values, index=len(harga_values)-1)
 
+# Selectbox untuk memilih rentang RAM
+col3, col4 = st.columns(2)
 with col3:
-    min_storage = st.slider('Minimal Penyimpanan (GB)', 128, 2048, 256, step=128)
+    min_ram = st.selectbox('Minimal RAM (GB)', ram_values, index=0)
+with col4:
+    max_ram = st.selectbox('Maksimal RAM (GB)', ram_values, index=len(ram_values)-1)
+
+# Selectbox untuk memilih rentang penyimpanan
+col5, col6 = st.columns(2)
+with col5:
+    min_storage = st.selectbox('Minimal Penyimpanan (GB)', storage_values, index=0)
+with col6:
+    max_storage = st.selectbox('Maksimal Penyimpanan (GB)', storage_values, index=len(storage_values)-1)
+
 
 # Filter data berdasarkan input pengguna
-filtered_data = data[(data['Harga (IDR)'] <= max_price) &
-                     (data['RAM (GB)'] >= min_ram) &
-                     (data['Penyimpanan (GB)'] >= min_storage)]
+filtered_data = data[(data['Harga'] >= min_price) &
+                     (data['Harga'] <= max_price) &
+                     (data['RAM'] >= min_ram) &
+                     (data['RAM'] <= max_ram) &
+                     (data['Penyimpanan'] >= min_storage) &
+                     (data['Penyimpanan'] <= max_storage)]
 
-# Menampilkan hasil dengan style
+if selected_nama != 'Semua':
+    filtered_data = filtered_data[filtered_data['Nama'] == selected_nama]
+
+# Menampilkan hasil
 st.subheader('Laptop yang Direkomendasikan')
 st.write(f"Menampilkan {len(filtered_data)} dari {len(data)} laptop yang memenuhi kriteria Anda:")
-st.dataframe(filtered_data.style.format({"Harga (IDR)": "Rp{:,.0f}", "RAM (GB)": "{:,.0f} GB", "Penyimpanan (GB)": "{:,.0f} GB"}))
+st.dataframe(filtered_data)
 
 # Footer
 st.markdown("""
@@ -58,6 +78,6 @@ st.markdown("""
         }
     </style>
     <div class="footer">
-        © 2024 Sistem Pendukung Keputusan Pemilihan Laptop. Dikembangkan oleh hitler.
+        © 2024 Sistem Pendukung Keputusan Pemilihan Laptop.
     </div>
 """, unsafe_allow_html=True)
