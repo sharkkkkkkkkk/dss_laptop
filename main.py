@@ -16,8 +16,8 @@ st.markdown("Selamat datang di Sistem Pendukung Keputusan untuk pemilihan laptop
 
 # Rentang harga yang tersedia
 harga_values = sorted(data['Harga'].unique())
-ram_values = sorted(data['RAM'].unique())
-storage_values = sorted(data['Penyimpanan'].unique())
+ram_values = sorted(data['RAM(GB)'].unique())
+storage_values = sorted(data['Penyimpanan(GB)'].unique())
 
 # Menampilkan rentang harga terendah dan tertinggi
 st.markdown(f"**Harga Terendah:** IDR {harga_values[0]:,}")
